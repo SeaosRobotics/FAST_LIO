@@ -1,3 +1,5 @@
+#file created using https://github.com/Taeyoung96/FAST_LIO_ROS2
+
 common:
     lid_topic:  "/livox/lidar"
     imu_topic:  "/livox/imu"
