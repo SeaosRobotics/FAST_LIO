@@ -86,6 +86,10 @@ void Preprocess::process(const sensor_msgs::PointCloud2::ConstPtr &msg, PointClo
     mid360_handler(msg);
     break;
 
+  case ROBOSENSE16:
+    robosense_handler(msg);
+    break;
+
   default:
     default_handler(msg);
     printf("Error LiDAR Type, Using default type");
@@ -460,6 +464,9 @@ void Preprocess::velodyne_handler(const sensor_msgs::PointCloud2::ConstPtr &msg)
     }
 }
 
+
+
+
 void Preprocess::sim_handler(const sensor_msgs::PointCloud2::ConstPtr &msg) {
     pl_surf.clear();
     pl_full.clear();
@@ -567,6 +574,11 @@ void Preprocess::mid360_handler(const sensor_msgs::PointCloud2::ConstPtr &msg)
       pl_surf.push_back(std::move(added_pt));
     }
   }
+}
+
+void Preprocess::robosense_handler(const sensor_msgs::PointCloud2::ConstPtr &msg)
+{
+  default_handler(msg);
 }
 
 void Preprocess::default_handler(const sensor_msgs::PointCloud2::ConstPtr &msg)
